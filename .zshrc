@@ -36,6 +36,43 @@ plugins=(cap command-not-found rake rvm extract git github ruby bundler gem scre
 
 source $ZSH/oh-my-zsh.sh
 
+
+
+# TODO: DRY up bash/zsh init duplication
+
+
+# ssh-agent
+
+test=`/bin/ps -ef | /bin/grep ssh-agent | /bin/grep -v grep  | /usr/bin/awk '{print $2}' | xargs`
+
+if [ "$test" = "" ]; then
+   
+   # there is no agent running
+   if [ -e "$HOME/agent.sh" ]; then
+      # remove the old file
+      /bin/rm -f $HOME/agent.sh
+   fi;
+   
+   # start a new agent
+   /usr/bin/ssh-agent | /bin/grep -v echo >&$HOME/agent.sh
+fi;
+
+test -e $HOME/agent.sh && source $HOME/agent.sh
+
+if [ "$test" = "" ]; then
+   /usr/bin/ssh-add
+fi;
+
+alias kagent="kill -9 $SSH_AGENT_PID"
+
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 # Customize to your needs...
+
+
+
 export PATH=/home/AHC/rahim.packirsaibo/.rvm/gems/ruby-1.9.3-p194/bin:/home/AHC/rahim.packirsaibo/.rvm/gems/ruby-1.9.3-p194@global/bin:/home/AHC/rahim.packirsaibo/.rvm/rubies/ruby-1.9.3-p194/bin:/home/AHC/rahim.packirsaibo/.rvm/bin:/home/AHC/rahim.packirsaibo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/AHC/rahim.packirsaibo/.rvm/bin:/home/AHC/rahim.packirsaibo/.rvm/bin
 alias homeconfig='git --git-dir=/home/AHC/rahim.packirsaibo/.homeconfig.git/ --work-tree=/home/AHC/rahim.packirsaibo'
