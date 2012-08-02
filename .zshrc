@@ -68,11 +68,21 @@ alias kagent="kill -9 $SSH_AGENT_PID"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
 
+# sublime host/guest vm wireup (guest)
+
+function sb {
+  # TODO: do something to deal with paths that don't match shared workspace
+  # perhaps open in vim? or prompt to open in vim?
+  local FULLPATH=`readlink -f $1`
+  local HOMEPATH=~ #/home/AHC/rahim.packirsaibo
+  local HOMECHAR='~'
+  local REPLACED_PATH=${FULLPATH/$HOMEPATH/$HOMECHAR}
+  echo $REPLACED_PATH
+  ssh laptop33 '~/bin/sb' $REPLACED_PATH &
+}
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Customize to your needs...
-
-
-
-export PATH=/home/AHC/rahim.packirsaibo/.rvm/gems/ruby-1.9.3-p194/bin:/home/AHC/rahim.packirsaibo/.rvm/gems/ruby-1.9.3-p194@global/bin:/home/AHC/rahim.packirsaibo/.rvm/rubies/ruby-1.9.3-p194/bin:/home/AHC/rahim.packirsaibo/.rvm/bin:/home/AHC/rahim.packirsaibo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/AHC/rahim.packirsaibo/.rvm/bin:/home/AHC/rahim.packirsaibo/.rvm/bin
+export PATH=/home/AHC/rahim.packirsaibo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/AHC/rahim.packirsaibo/.rvm/bin
 alias homeconfig='git --git-dir=/home/AHC/rahim.packirsaibo/.homeconfig.git/ --work-tree=/home/AHC/rahim.packirsaibo'
