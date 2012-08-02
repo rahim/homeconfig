@@ -1,0 +1,20 @@
+#!/bin/bash
+
+WORKSPACE="workspace"
+echo "Looking for $WORKSPACE in $HOME"
+
+if [ ! -d $HOME/$WORKSPACE ]; then
+	echo "No workspace found, creating..."
+	mkdir -p $HOME/$WORKSPACE
+fi
+
+UUID=$(id -u)
+UGID=$(id -g)
+USER=$(whoami)
+
+MOUNTHOST="$(hostname | sed 's/.$//g' | tr '[:lower:]' '[:upper:]' )"
+
+echo "Going to mount with username $USER (UID: $UUID / GID: $UGID)"
+echo "Using 192.168.56.1 and $MOUNTHOST as target"
+sudo /sbin/mount.cifs "//192.168.56.1/workspace" $HOME/$WORKSPACE -o user=$USER,dom=AHC,uid=$UUID,gid=$UGID,servern=$MOUNTHOST
+
