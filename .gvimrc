@@ -1,0 +1,1 @@
+/home/AHC/rahim.packirsaibo/.vim/janus/vim/gvimrc
