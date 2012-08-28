@@ -4,9 +4,8 @@ require 'rubygems'
 require 'ap' # Awesome Print
 require 'net-http-spy' # Print information about any HTTP requests being made
 
-#TODO: fix this for boson 1.0, boson-more, boson console
-#require 'boson' # Load libraries from the Boson command framework
-#Boson.start :verbose => false
+require 'boson/console'
+Boson.start :verbose => false
 
 # ASCII table views
 require 'hirb'
