@@ -4,8 +4,10 @@ require 'rubygems'
 require 'ap' # Awesome Print
 require 'net-http-spy' # Print information about any HTTP requests being made
 
-require 'boson/console'
-Boson.start :verbose => false
+if RUBY_VERSION >= '1.9.1'
+  require 'boson/console'
+  Boson.start :verbose => false
+end
 
 # ASCII table views
 require 'hirb'
