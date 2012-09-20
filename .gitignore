@@ -49,3 +49,6 @@ test.sh
 tmp/
 .ssh
 agent.sh
+.juicer
+workspace
+.homeconfig*
