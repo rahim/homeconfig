@@ -30,7 +30,7 @@ ZSH_THEME="rahim"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cap command-not-found rake rvm extract git github ruby bundler gem screen)
+plugins=(cap command-not-found rake rvm extract git github ruby bundler gem screen file-info)
 
 #excluded: npm - xmas issue
 
