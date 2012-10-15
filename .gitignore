@@ -52,3 +52,7 @@ agent.sh
 .juicer
 workspace
 .homeconfig*
+.lesshst
+.node_modules
+.npm
+lworkspace

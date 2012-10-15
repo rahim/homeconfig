@@ -74,7 +74,7 @@ function sb {
   # TODO: do something to deal with paths that don't match shared workspace
   # perhaps open in vim? or prompt to open in vim?
   local FULLPATH=`readlink -f $1`
-  local HOMEPATH=~ #/home/AHC/rahim.packirsaibo
+  local HOMEPATH=~ #$HOME
   local HOMECHAR='~'
   local REPLACED_PATH=${FULLPATH/$HOMEPATH/$HOMECHAR}
   echo $REPLACED_PATH
@@ -84,5 +84,5 @@ function sb {
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Customize to your needs...
-export PATH=/home/AHC/rahim.packirsaibo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/AHC/rahim.packirsaibo/.rvm/bin
-alias homeconfig='git --git-dir=/home/AHC/rahim.packirsaibo/.homeconfig.git/ --work-tree=/home/AHC/rahim.packirsaibo'
+PATH=$HOME/.local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
+alias homeconfig='git --git-dir=$HOME/.homeconfig.git/ --work-tree=$HOME'
