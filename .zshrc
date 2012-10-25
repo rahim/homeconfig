@@ -29,8 +29,9 @@ ZSH_THEME="rahim"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cap command-not-found rake rvm extract git github ruby bundler gem screen file-info)
+# Example format: plugins=(rails git textmate ruby lighthouse)i
+# removed: bundler
+plugins=(cap command-not-found rake rvm extract git github ruby gem screen file-info)
 
 #excluded: npm - xmas issue
 
@@ -81,8 +82,9 @@ function sb {
   ssh laptop33 '~/bin/sb' $REPLACED_PATH &
 }
 
+# Customize to your needs...
+PATH=$HOME/.local/bin:$HOME/bin:/$HOME/.rvm/bin:usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+alias homeconfig='git --git-dir=$HOME/.homeconfig.git/ --work-tree=$HOME'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# Customize to your needs...
-PATH=$HOME/.local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.rvm/bin:$PATH
-alias homeconfig='git --git-dir=$HOME/.homeconfig.git/ --work-tree=$HOME'
