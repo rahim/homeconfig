@@ -1,13 +1,4 @@
-rubygems-bundler
 bundler
+rubygems-bundler
 rake
 rvm
-boson
-boson-more
-awesome_print
-net-http-spy
-wirble
-bond
-hirb
-
-alias
